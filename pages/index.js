@@ -1,19 +1,9 @@
-import Dashboard from '../src/Dashboard';
+import { Typography } from '@material-ui/core';
 
-export default function Home() {
+export default function About() {
   return (
-    <div className="container">
-      <main>
-        <h1 className="title">Toby's Tips</h1>
-      </main>
-
-      <footer></footer>
-
-      <style jsx>{`
-        .title {
-          text-align: center;
-        }
-      `}</style>
-    </div>
+    <Typography component="h1" variant="h6" color="inherit">
+      About Me
+    </Typography>
   );
 }
