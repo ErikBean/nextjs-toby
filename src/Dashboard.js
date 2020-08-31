@@ -81,6 +81,8 @@ const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
+    float: 'right',
+    maxWidth: '800px',
     height: '100vh',
     overflow: 'auto',
   },
@@ -94,9 +96,6 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
-  fixedHeight: {
-    height: 240,
-  },
 }));
 
 export default function Dashboard({ children }) {
@@ -108,7 +107,6 @@ export default function Dashboard({ children }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
@@ -168,7 +166,7 @@ export default function Dashboard({ children }) {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>{children}</Paper>
+              <Paper className={classes.paper}>{children}</Paper>
             </Grid>
           </Grid>
         </Container>
