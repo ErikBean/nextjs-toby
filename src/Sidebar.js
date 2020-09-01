@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { colors } from '../src/colors';
+import { colors } from './colors';
 
 const routes = [
   { route: '/', title: 'About Me', icon: '💁' },
