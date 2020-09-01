@@ -16,6 +16,7 @@ class MyDocument extends Document {
           <NextScript />
         </body>
         <style jsx global>{`
+          @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
           html,
           body,
           #__next {

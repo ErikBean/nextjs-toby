@@ -20,7 +20,7 @@ export default ({ children }) => (
         flex-grow: 1;
       }
       .main {
-        margin: 80px;
+        height: 100%;
       }
     `}</style>
   </>

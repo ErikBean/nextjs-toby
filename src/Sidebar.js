@@ -20,7 +20,7 @@ export default function Sidebar() {
             <Link href={route} key={route}>
               <a className="route-link">
                 <span className="route-icon">{icon}</span>
-                {title}
+                <span className="title-text">{title}</span>
               </a>
             </Link>
           ))}
@@ -29,12 +29,13 @@ export default function Sidebar() {
 
       <style jsx>{`
         .sidebar-main {
+          position: relative;
           display: flex;
           width: 200px;
           flex-direction: column;
           background-color: ${colors.calico};
           box-shadow: 0 4px 8px ${colors.limedSpruce};
-          z-index: 1;
+          z-index: 2;
         }
         .toby-avatar {
           width: 100px;
@@ -42,11 +43,10 @@ export default function Sidebar() {
           border-radius: 99px;
           margin: 20px 0;
           align-self: center;
-          border: 1px solid grey;
-          box-shadow: 0 0 12px 8px #ffff0057;
+          border: 3px solid ${colors.limedSpruce};
         }
         .toby-avatar:hover {
-          filter: saturate(1.5);
+          box-shadow: 0 0 12px 8px #ffff0057;
         }
         .routes {
           display: flex;
@@ -57,16 +57,25 @@ export default function Sidebar() {
         .route-icon {
           padding: 0 20px;
         }
-        .route-link:hover {
-          box-shadow: 0 4px 5px -2px ${colors.limedSpruce};
+        @media (any-hover: hover) {
+          .route-link:hover {
+            transform: scale(1.1);
+          }
+          .route-link:hover .title-text {
+            color: white;
+            text-shadow: 0px 0px 3px ${colors.limedSpruce};
+          }
         }
         .route-link {
+          transition: transform 0.1s ease-in;
           flex-grow: 1;
+          padding-right: 20px;
           display: flex;
           align-items: center;
           color: ${colors.limedSpruce};
           text-decoration: none;
           font-size: 1.5rem;
+          box-sizing: border-box;
         }
       `}</style>
     </>

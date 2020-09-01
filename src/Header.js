@@ -7,25 +7,23 @@ export default () => (
     </header>
     <style jsx>{`
       .header {
+        position: relative;
         display: flex;
         align-items: center;
-        padding-left: 40px;
-        height: 140px;
+        justify-content: center;
+        height: 80px;
         background-color: ${colors.cinnabar};
-        border-bottom: 2px solid ${colors.calico};
         box-shadow: 0 2px 10px ${colors.limedSpruce};
-        box-sizing: border-box;
-      }
-      .title {
-        letter-spacing: 5px;
+        font-family: 'Gamja Flower', sans-serif;
         color: ${colors.alabaster};
-        font-size: 40px;
+        font-size: 65px;
+        font-weight: bold;
+        letter-spacing: 5px;
       }
       @media (max-width: 639px) {
-        .title {
-          font-size: 20px;
-        }
         .header {
+          letter-spacing: initial;
+          font-size: 40px;
           padding-left: 20px;
         }
       }
