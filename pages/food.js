@@ -4,7 +4,6 @@ export default function Food() {
       <div className="container">Food I Like~!</div>
       <style jsx>{`
         .container {
-          display: inline-block;
         }
       `}</style>
     </>
