@@ -1,6 +1,6 @@
 // import App from 'next/app'
 
-import Dashboard from '../src/_dashboard';
+import Dashboard from '../src/Dashboard';
 
 function MyApp({ Component, pageProps }) {
   return (

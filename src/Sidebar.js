@@ -39,8 +39,14 @@ export default function Sidebar() {
         .toby-avatar {
           width: 100px;
           height: 100px;
-          border-radius: 15px;
-          margin: 20px 0 20px 20px;
+          border-radius: 99px;
+          margin: 20px 0;
+          align-self: center;
+          border: 1px solid grey;
+          box-shadow: 0 0 12px 8px #ffff0057;
+        }
+        .toby-avatar:hover {
+          filter: saturate(1.5);
         }
         .routes {
           display: flex;

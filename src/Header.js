@@ -17,8 +17,17 @@ export default () => (
         box-sizing: border-box;
       }
       .title {
+        letter-spacing: 5px;
         color: ${colors.alabaster};
-        font-size: 2rem;
+        font-size: 40px;
+      }
+      @media (max-width: 639px) {
+        .title {
+          font-size: 20px;
+        }
+        .header {
+          padding-left: 20px;
+        }
       }
     `}</style>
   </>

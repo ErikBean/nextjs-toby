@@ -23,6 +23,5 @@ export default ({ children }) => (
         margin: 80px;
       }
     `}</style>
-    <style jsx global>{``}</style>
   </>
 );
