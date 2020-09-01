@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { colors } from './colors';
+import debounce from 'lodash.debounce';
+import { useState, useEffect } from 'react';
 
 const routes = [
   { route: '/', title: 'About Me', icon: '💁' },
@@ -11,16 +13,28 @@ const routes = [
 ];
 
 export default function Sidebar() {
+  const [open, setOpen] = useState(true);
+  const toggleDrawer = () => setOpen(!open);
+  useEffect(() => {
+    const onResize = debounce(() => setOpen(window.innerWidth >= 800), 500);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [open]);
+
   return (
     <>
       <aside className="sidebar-main">
-        <img className="toby-avatar" src="/toby-avatar-small.jpeg" />
+        <img
+          className="toby-avatar"
+          src="/toby-avatar-small.jpeg"
+          onClick={toggleDrawer}
+        />
         <nav className="routes">
           {routes.map(({ route, title, icon }) => (
             <Link href={route} key={route}>
               <a className="route-link">
                 <span className="route-icon">{icon}</span>
-                <span className="title-text">{title}</span>
+                {open && <span className="title-text">{title}</span>}
               </a>
             </Link>
           ))}
@@ -31,22 +45,20 @@ export default function Sidebar() {
         .sidebar-main {
           position: relative;
           display: flex;
-          width: 200px;
           flex-direction: column;
           background-color: ${colors.calico};
           box-shadow: 0 4px 8px ${colors.limedSpruce};
           z-index: 2;
+          width: ${open ? '200px' : '70px'};
+          transition: width 0.5s ease-in;
         }
         .toby-avatar {
-          width: 100px;
-          height: 100px;
+          width: ${open ? '100px' : '50px'};
+          height: ${open ? '100px' : '50px'};
           border-radius: 99px;
-          margin: 20px 0;
+          margin: ${open ? '20px 0' : '90px 0 5px 0'};
           align-self: center;
           border: 3px solid ${colors.limedSpruce};
-        }
-        .toby-avatar:hover {
-          box-shadow: 0 0 12px 8px #ffff0057;
         }
         .routes {
           display: flex;
@@ -65,11 +77,13 @@ export default function Sidebar() {
             color: white;
             text-shadow: 0px 0px 3px ${colors.limedSpruce};
           }
+          .toby-avatar:hover {
+            box-shadow: 0 0 12px 8px #ffff0057;
+          }
         }
         .route-link {
           transition: transform 0.1s ease-in;
           flex-grow: 1;
-          padding-right: 20px;
           display: flex;
           align-items: center;
           color: ${colors.limedSpruce};
