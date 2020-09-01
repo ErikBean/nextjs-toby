@@ -21,7 +21,7 @@ export default ({ children }) => (
         flex-grow: 1;
       }
       .main {
-        margin: 5vw;
+        margin: 80px;
       }
     `}</style>
     <style jsx global>{``}</style>

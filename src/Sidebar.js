@@ -33,6 +33,8 @@ export default function Sidebar() {
           width: 200px;
           flex-direction: column;
           background-color: ${colors.calico};
+          box-shadow: 0 4px 8px ${colors.limedSpruce};
+          z-index: 1;
         }
         .toby-avatar {
           width: 100px;
@@ -47,13 +49,15 @@ export default function Sidebar() {
           height: 350px;
         }
         .route-icon {
-          padding: 5px 0;
+          padding: 0 20px;
+        }
+        .route-link:hover {
+          box-shadow: 0 4px 5px -2px ${colors.limedSpruce};
         }
         .route-link {
           flex-grow: 1;
           display: flex;
           align-items: center;
-          justify-content: space-between;
           color: ${colors.limedSpruce};
           text-decoration: none;
           font-size: 1.5rem;
