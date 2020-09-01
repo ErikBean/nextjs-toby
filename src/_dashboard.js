@@ -1,35 +1,32 @@
-import Link from 'next/link';
+import { colors } from '../src/colors';
+import Sidebar from './sidebar';
 
 export default ({ children }) => (
   <>
-    <header className="header">Toby's Tips</header>
-    <div className="sidebar-main">
-      <sidebar className="sidebar">
-        <Link href="/">About Me</Link>
-        <Link href="/food">Food</Link>
-        <Link href="/treats">Treats</Link>
-        <Link href="/training">Training</Link>
-        <Link href="/toys">Toys</Link>
-        <Link href="/crates">Crates</Link>
-      </sidebar>
-      <main>{children}</main>
+    <div className="main-container">
+      <Sidebar />
+      <div className="main-content">
+        <header className="header">Toby's Tips</header>
+        <main>{children}</main>
+      </div>
       <footer></footer>
     </div>
     <style jsx>{`
       .header {
-        width: 100%;
-        background-color: blue;
+        height: 40px;
+        background-color: ${colors.cinnabar};
         color: white;
         padding: 20px;
+        font-size: 2rem;
         font-family: Open Sans, Helvetica, sans-serif;
+        border-bottom: 2px solid ${colors.calico};
+        box-shadow: 0 2px 10px ${colors.limedSpruce};
       }
-      .sidebar-main {
+      .main-container {
         display: flex;
       }
-      .sidebar {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+      .main-content {
+        flex-grow: 1;
       }
     `}</style>
     <style jsx global>{``}</style>

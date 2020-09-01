@@ -1,7 +1,9 @@
 export default function Food() {
   return (
     <>
-      <div className="container">Food I Like~!</div>
+      <div className="container">
+        <h1>Food I Like</h1>
+      </div>
       <style jsx>{`
         .container {
         }
