@@ -17,9 +17,12 @@ class MyDocument extends Document {
         </body>
         <style jsx global>{`
           html,
-          body {
+          body,
+          #__next {
             background-color: ${colors.alabaster};
             font-family: Open Sans, Helvetica, sans-serif;
+            width: 100vw;
+            height: 100vh;
           }
         `}</style>
       </Html>
