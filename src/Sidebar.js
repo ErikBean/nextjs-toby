@@ -66,6 +66,7 @@ export default function Sidebar() {
           height: ${open ? '150px' : '50px'};
           border-radius: 99px;
           border: 3px solid ${colors.limedSpruce};
+          background-color: 3px solid ${colors.limedSpruce};
           margin-bottom: ${open ? 0 : 20}px;
           transition: all 0.5s ease-in-out ${open ? 0.3 : 0}s;
         }

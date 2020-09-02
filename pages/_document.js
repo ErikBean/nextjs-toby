@@ -10,6 +10,8 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
           />
+          <link rel="icon" href="/favicon/favicon.ico" />
+          <link rel="manifest" href="/site.webmanifest" />
         </Head>
         <body>
           <Main />
