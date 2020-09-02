@@ -4,4 +4,5 @@ export const colors = {
   cinnabar: '#E4462B',
   santasGray: '#999BB9',
   limedSpruce: '#304049',
+  royalBlue: '#2b78e4',
 };

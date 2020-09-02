@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { colors } from './colors';
 import debounce from 'lodash.debounce';
 import { useState, useEffect } from 'react';
-
+import { colors } from './colors';
+import MenuArrow from './MenuArrow';
 const routes = [
   { route: '/', title: 'About Me', icon: '💁' },
   { route: '/food', title: 'Food', icon: '🥡' },
@@ -12,7 +12,7 @@ const routes = [
   { route: '/crates', title: 'Crates', icon: '📥' },
 ];
 
-export default function Sidebar({ headerHeight }) {
+export default function Sidebar() {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => setOpen(!open);
   useEffect(() => {
@@ -24,12 +24,11 @@ export default function Sidebar({ headerHeight }) {
   return (
     <>
       <aside className="sidebar-main">
+        <button onClick={toggleDrawer} className="arrow-button">
+          <MenuArrow isArrow={open} />
+        </button>
         <div className="avatar-container">
-          <img
-            className="toby-avatar"
-            src="/toby-avatar-small.jpeg"
-            onClick={toggleDrawer}
-          />
+          <img className="toby-avatar" src="/toby-avatar-small.jpeg" />
         </div>
         <nav className="routes">
           {routes.map(({ route, title, icon }) => (
@@ -56,23 +55,33 @@ export default function Sidebar({ headerHeight }) {
         }
         .avatar-container {
           display: flex;
-          height: ${headerHeight}px;
+          height: 176px;
           width: 100%;
           flex-direction: column;
-          justify-content: center;
-
+          justify-content: flex-end;
+          align-items: center;
         }
         .toby-avatar {
-          width: ${open ? '100px' : '50px'};
-          height: ${open ? '100px' : '50px'};
+          width: ${open ? '150px' : '50px'};
+          height: ${open ? '150px' : '50px'};
           border-radius: 99px;
-          align-self: center;
           border: 3px solid ${colors.limedSpruce};
-          transition: height 0.5s ease-in-out, width 0.5s ease-in-out;
+          margin-bottom: ${open ? 0 : 20}px;
+          transition: all 0.5s ease-in-out;
+        }
+        .arrow-button {
+          position: absolute;
+          top: 0;
+          align-self: flex-end;
+          border: none;
+          outline: none;
+          text-transform: none;
+          background: transparent;
+          transform: scaleX(-1) translateX(${open ? 0 : 4}px);
         }
         .routes {
           display: flex;
-          margin: 20px;
+          margin: 50px 20px 0 ${open ? 40 : 20}px;
           flex-direction: column;
           justify-content: space-between;
           height: 400px;
@@ -84,13 +93,14 @@ export default function Sidebar({ headerHeight }) {
           position: ${open ? 'relative' : 'absolute'};
           opacity: ${open ? '1' : '0'};
           font-size: ${open ? '1.5rem' : '0'};
-          transition: opacity 0.2s linear, font-size 0.2s linear;
+          transition: opacity ${open ? 0.3 : 0}s ease-in-out ${open ? 0.5 : 0}s,
+            font-size ${open ? 0.3 : 0}s ease-in-out ${open ? 0.5 : 0}s;
           white-space: nowrap;
         }
         @media (any-hover: hover) {
           .route-link:hover {
-            transform: scale(${open? '1.1' : '1.3'});
-          } 
+            transform: scale(${open ? '1.1' : '1.3'});
+          }
         }
         .route-link {
           line-height: 1.5;
