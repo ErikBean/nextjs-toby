@@ -24,17 +24,19 @@ export default function Sidebar() {
   return (
     <>
       <aside className="sidebar-main">
-        <img
-          className="toby-avatar"
-          src="/toby-avatar-small.jpeg"
-          onClick={toggleDrawer}
-        />
+        <div className="avatar-container">
+          <img
+            className="toby-avatar"
+            src="/toby-avatar-small.jpeg"
+            onClick={toggleDrawer}
+          />
+        </div>
         <nav className="routes">
           {routes.map(({ route, title, icon }) => (
             <Link href={route} key={route}>
               <a className="route-link">
                 <span className="route-icon">{icon}</span>
-                {open && <span className="title-text">{title}</span>}
+                <span className="title-text">{title}</span>
               </a>
             </Link>
           ))}
@@ -49,47 +51,58 @@ export default function Sidebar() {
           background-color: ${colors.calico};
           box-shadow: 0 4px 8px ${colors.limedSpruce};
           z-index: 2;
-          width: ${open ? '200px' : '70px'};
-          transition: width 0.5s ease-in;
+          padding: 0 40px;
+          width: ${open ? '200px' : '40px'};
+          transition: width 0.5s ease-in-out;
+        }
+        .avatar-container {
+          display: flex;
+          height: 156px;
+          flex-direction: column;
+          justify-content: center;
         }
         .toby-avatar {
           width: ${open ? '100px' : '50px'};
           height: ${open ? '100px' : '50px'};
           border-radius: 99px;
-          margin: ${open ? '20px 0' : '90px 0 5px 0'};
           align-self: center;
           border: 3px solid ${colors.limedSpruce};
+          transition: height 0.5s ease-in-out, width 0.5s ease-in-out;
         }
         .routes {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          height: 350px;
+          height: 400px;
         }
         .route-icon {
-          padding: 0 20px;
+          padding: ${open ? '0 20px 0 0' : '0'};
+        }
+        .title-text {
+          position: ${open ? 'relative' : 'absolute'};
+          opacity: ${open ? '1' : '0'};
+          font-size: ${open ? '1.5rem' : '0'};
+          transition: opacity 0.2s linear, font-size 0.2s linear;
+          white-space: nowrap;
         }
         @media (any-hover: hover) {
           .route-link:hover {
-            transform: scale(1.1);
-          }
-          .route-link:hover .title-text {
-            color: white;
-            text-shadow: 0px 0px 3px ${colors.limedSpruce};
-          }
-          .toby-avatar:hover {
-            box-shadow: 0 0 12px 8px #ffff0057;
-          }
+            transform: scale(${open? '1.1' : '1.3'});
+          } 
         }
         .route-link {
-          transition: transform 0.1s ease-in;
-          flex-grow: 1;
+          line-height: 1.5;
+          transition: transform 0.1s ease-in-out;
+          transition-origin: top left;
           display: flex;
           align-items: center;
+          justify-content: flex-start;
           color: ${colors.limedSpruce};
+          overflow-x: ${open ? 'visible' : 'hidden'};
           text-decoration: none;
-          font-size: 1.5rem;
+          font-size: ${open ? '1.5rem' : '2.5rem'};
           box-sizing: border-box;
+          transition: font-size 0.7s ease-in-out;
         }
       `}</style>
     </>
