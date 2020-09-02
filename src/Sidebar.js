@@ -16,7 +16,10 @@ export default function Sidebar() {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => setOpen(!open);
   useEffect(() => {
-    const onResize = debounce(() => setOpen(window.innerWidth >= 800), 500);
+    const onResize = debounce(
+      () => window.innerWidth <= 639 && setOpen(false),
+      500,
+    );
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, [open]);
@@ -51,14 +54,16 @@ export default function Sidebar() {
           box-shadow: 0 4px 8px ${colors.limedSpruce};
           z-index: 2;
           width: ${open ? '280px' : '80px'};
+          padding: 20px;
           transition: width 0.5s ease-in-out;
+          box-sizing: border-box;
         }
         .avatar-container {
           display: flex;
           height: 176px;
           width: 100%;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: center;
           align-items: center;
         }
         .toby-avatar {
@@ -67,12 +72,12 @@ export default function Sidebar() {
           border-radius: 99px;
           border: 3px solid ${colors.limedSpruce};
           background-color: 3px solid ${colors.limedSpruce};
-          margin-bottom: ${open ? 0 : 20}px;
-          transition: all 0.5s ease-in-out ${open ? 0.3 : 0}s;
+          transition: height ${open ? 0.8 : 0.4}s ease-in-out,
+            width ${open ? 0.8 : 0.4}s ease-in-out;
         }
         .arrow-button {
           position: absolute;
-          top: 0;
+          top: ${open ? 0 : '20'}px;
           right: ${open ? -10 : 0}px;
           align-self: flex-end;
           border: none;
@@ -80,10 +85,10 @@ export default function Sidebar() {
           text-transform: none;
           background: transparent;
           transform: scaleX(-1) translateX(${open ? 0 : 4}px);
+          transition: top 0.5s linear;
         }
         .routes {
           display: flex;
-          margin: 40px 20px 0 ${open ? 40 : 20}px;
           flex-direction: column;
           justify-content: space-between;
           height: 400px;

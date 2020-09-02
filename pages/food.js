@@ -17,15 +17,29 @@ export default function Food() {
         <img className="dog-pasta" src="dog-pasta-tongue.jpg" />
       </div>
       <style jsx>{`
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
         .content-container {
           display: flex;
         }
         .dog-pasta {
           width: 50%;
+          animation: fadeIn ease 2s;
         }
         .article {
           width: 50%;
+          font-size: 24px;
+          padding: 20px;
+          font-family: Times, serif;
+          box-sizing: border-box;
         }
+
         @media (max-width: ${sizes.mobileMax}) {
           .content-container {
             flex-direction: column;
@@ -38,12 +52,6 @@ export default function Food() {
             order: 1;
             width: 100%;
           }
-        }
-        .article {
-          font-size: 18px;
-          padding: 20px;
-          font-family: Times, serif;
-          box-sizing: border-box;
         }
       `}</style>
     </>

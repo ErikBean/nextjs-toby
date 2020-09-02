@@ -8,7 +8,7 @@ export default function Toys() {
       </p>
       <style jsx>{`
         .bio {
-          font-size: 18px;
+          font-size: 24px;
           padding: 20px;
           font-family: Times, serif;
         }
