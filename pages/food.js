@@ -1,5 +1,5 @@
 import PageTitle from '../src/PageTitle';
-
+import { sizes } from '../src/sizes';
 const imageUrls = [
   'https://media1.tenor.com/images/c3a40ce7dfb68b642dc42e7bd597951e/tenor.gif?itemid=10400593',
   'https://www.woodstockrunners.org.au/wp-content/uploads/2012/09/cute-dog-food-funny-pasta-tongue-Favim.com-43335.jpg',
@@ -12,12 +12,38 @@ export default function Food() {
   return (
     <>
       <PageTitle title="I Like Food!" />
-      <p className="bio">Kibble again? Oh boy!</p>
+      <div className="content-container">
+        <p className="article">Kibble again? Oh boy!</p>
+        <img className="dog-pasta" src="dog-pasta-tongue.jpg" />
+      </div>
       <style jsx>{`
-        .bio {
+        .content-container {
+          display: flex;
+        }
+        .dog-pasta {
+          width: 50%;
+        }
+        .article {
+          width: 50%;
+        }
+        @media (max-width: ${sizes.mobileMax}) {
+          .content-container {
+            flex-direction: column;
+          }
+          .dog-pasta {
+            order: 0;
+            width: 100%;
+          }
+          .article {
+            order: 1;
+            width: 100%;
+          }
+        }
+        .article {
           font-size: 18px;
           padding: 20px;
           font-family: Times, serif;
+          box-sizing: border-box;
         }
       `}</style>
     </>

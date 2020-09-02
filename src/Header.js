@@ -1,4 +1,5 @@
 import { colors } from '../src/colors';
+import { sizes } from '../src/sizes';
 
 export default () => (
   <>
@@ -20,10 +21,11 @@ export default () => (
         font-weight: bold;
         letter-spacing: 5px;
       }
-      @media (max-width: 639px) {
+      @media (max-width: ${sizes.mobileMax}) {
         .header {
           letter-spacing: initial;
           font-size: 40px;
+          padding-left: 20px;
         }
       }
     `}</style>

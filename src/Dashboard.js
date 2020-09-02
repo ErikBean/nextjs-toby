@@ -15,11 +15,12 @@ export default ({ children }) => {
         .main-container {
           display: flex;
           height: 100%;
+          width: 100%;
         }
         .main-content {
           flex-grow: 1;
         }
       `}</style>
     </>
-  )
+  );
 };
