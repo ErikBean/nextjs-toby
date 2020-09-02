@@ -2,7 +2,7 @@ import { colors } from './colors';
 export default function PageTitle({ title }) {
   return (
     <>
-      <h1 className="title">{title}</h1>
+      <h1 className="title" id="page-header">{title}</h1>
       <style jsx>{`
         .title {
           color: ${colors.alabaster};

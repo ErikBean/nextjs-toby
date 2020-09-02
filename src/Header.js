@@ -2,7 +2,7 @@ import { colors } from '../src/colors';
 
 export default () => (
   <>
-    <header className="header">
+    <header className="header" id="top-header">
       <h1 className="title">Toby's Tips</h1>
     </header>
     <style jsx>{`
@@ -24,7 +24,6 @@ export default () => (
         .header {
           letter-spacing: initial;
           font-size: 40px;
-          padding-left: 20px;
         }
       }
     `}</style>

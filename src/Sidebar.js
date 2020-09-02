@@ -12,7 +12,7 @@ const routes = [
   { route: '/crates', title: 'Crates', icon: '📥' },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ headerHeight }) {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => setOpen(!open);
   useEffect(() => {
@@ -51,15 +51,16 @@ export default function Sidebar() {
           background-color: ${colors.calico};
           box-shadow: 0 4px 8px ${colors.limedSpruce};
           z-index: 2;
-          padding: 0 40px;
-          width: ${open ? '200px' : '40px'};
+          width: ${open ? '280px' : '80px'};
           transition: width 0.5s ease-in-out;
         }
         .avatar-container {
           display: flex;
-          height: 156px;
+          height: ${headerHeight}px;
+          width: 100%;
           flex-direction: column;
           justify-content: center;
+
         }
         .toby-avatar {
           width: ${open ? '100px' : '50px'};
@@ -71,6 +72,7 @@ export default function Sidebar() {
         }
         .routes {
           display: flex;
+          margin: 20px;
           flex-direction: column;
           justify-content: space-between;
           height: 400px;
