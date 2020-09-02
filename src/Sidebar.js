@@ -67,11 +67,12 @@ export default function Sidebar() {
           border-radius: 99px;
           border: 3px solid ${colors.limedSpruce};
           margin-bottom: ${open ? 0 : 20}px;
-          transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out ${open ? 0.3 : 0}s;
         }
         .arrow-button {
           position: absolute;
           top: 0;
+          right: ${open ? -10 : 0}px;
           align-self: flex-end;
           border: none;
           outline: none;
@@ -81,7 +82,7 @@ export default function Sidebar() {
         }
         .routes {
           display: flex;
-          margin: 50px 20px 0 ${open ? 40 : 20}px;
+          margin: 40px 20px 0 ${open ? 40 : 20}px;
           flex-direction: column;
           justify-content: space-between;
           height: 400px;
