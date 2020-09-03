@@ -67,10 +67,10 @@ export default function Sidebar() {
           align-items: center;
         }
         .toby-avatar {
-          width: ${open ? '150px' : '50px'};
-          height: ${open ? '150px' : '50px'};
+          width: ${open ? '150px' : '0px'};
+          height: ${open ? '150px' : '0px'};
           border-radius: 99px;
-          border: 3px solid ${colors.limedSpruce};
+          border: ${open ? 3 : 0}px solid ${colors.limedSpruce};
           background-color: 3px solid ${colors.limedSpruce};
           transition: height ${open ? 0.8 : 0.4}s ease-in-out,
             width ${open ? 0.8 : 0.4}s ease-in-out;
@@ -121,7 +121,7 @@ export default function Sidebar() {
           text-decoration: none;
           font-size: ${open ? '1.5rem' : '2.5rem'};
           box-sizing: border-box;
-          transition: all 0.7s ease-in-out;
+          transition: font-size 0.7s ease-in-out;
         }
       `}</style>
     </>

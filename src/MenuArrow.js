@@ -24,7 +24,7 @@ export default ({ isArrow = false }) => {
           left: 0;
           display: block;
           width: 100%;
-          height: 0.2em;
+          height: 0.3em;
           margin-top: -0.1em;
           background-color: ${colors.limedSpruce};
           -webkit-touch-callout: none;

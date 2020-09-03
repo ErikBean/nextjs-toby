@@ -3,7 +3,6 @@ import { colors } from '../src/colors';
 import hashCode from '../src/magicHash';
 import PageTitle from '../src/PageTitle';
 import Jumper from '../src/Jumper';
-import { useState } from 'react';
 
 const facts = [
   'I am a white golden retriever, and a Guide Dogs for America flunky.',
@@ -12,18 +11,15 @@ const facts = [
 ];
 
 export default function About() {
-  const [jumperShown, setJumperShown] = useState(false);
   return (
     <>
       <PageTitle title="About Me" />
       <div className="container">
-        <img
-          src="/toby-car.jpg"
-          className="toby-car"
-          onLoad={() => setJumperShown(true)}
-        />
-        <div className="jumper-box">
-          {jumperShown && <Jumper text="THAT'S ME!" />}
+        <div className="img-box">
+          <img src="/toby-car.jpg" className="toby-car" />
+          <div className="jumper-box">
+            <Jumper text="" color="lightgreen" ball image="/tennis-ball.webp" />
+          </div>
         </div>
         <div className="bio">
           <ul className="list">
@@ -47,15 +43,23 @@ export default function About() {
         .container {
           display: flex;
           justify-content: space-between;
+        }
+        .img-box {
           position: relative;
         }
         .toby-car {
           width: 100%;
+          max-width: 600px;
           background: ${colors.santasGrey};
           animation: fadeIn ease 2s;
         }
         .jumper-box {
           position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transform: translateX(-30%);
         }
         .bio {
           font-size: 24px;
@@ -74,7 +78,7 @@ export default function About() {
             list-style-position: outside;
           }
         }
-        @media (max-width: ${sizes.mobileMax}) {
+        @media (max-width: ${sizes.tabletMax}) {
           .container {
             flex-direction: column;
           }

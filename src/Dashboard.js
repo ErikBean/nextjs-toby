@@ -14,9 +14,10 @@ export default ({ children }) => {
       <style jsx>{`
         .main-container {
           display: flex;
-          overflow: auto;
-          width: 100%;
-          height: 100%;
+          min-height: 100vh;
+          min-width: 100vw;
+          overflow-x: auto;
+          overflow-y: auto;
         }
         .main-content {
           flex-grow: 1;
