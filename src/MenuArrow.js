@@ -35,6 +35,7 @@ export default ({ isArrow = false }) => {
           user-select: none;
           -webkit-transition: background-color 0.3s;
           transition: background-color 0.3s;
+          border-radius: 99px;
         }
 
         .bt-menu-trigger span:after,
@@ -47,6 +48,7 @@ export default ({ isArrow = false }) => {
           content: '';
           -webkit-transition: -webkit-transform 0.3s;
           transition: transform 0.3s;
+          border-radius: 99px;
         }
 
         .bt-menu-trigger span:before {

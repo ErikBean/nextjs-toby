@@ -1,16 +1,30 @@
+import { colors } from '../src/colors';
+
 export default function Jumper({
   text = '',
   color = 'blue',
   arrow = false,
   ball = false,
   image = '',
+  inMotion = true,
 }) {
   return (
     <>
       <div className="stage">
-        <div className="box bounce-7"></div>
+        <div className={`box ${inMotion ? 'bounce-7' : 'glow'}`}></div>
       </div>
       <style jsx>{`
+        @keyframes glow {
+          0% {
+            box-shadow: 0 0 30px 30px ${colors.cinnabar};
+          }
+          50% {
+            box-shadow: none;
+          }
+          100% {
+            box-shadow: 0 0 30px 30px ${colors.cinnabar};
+          }
+        }
         @keyframes bounce-7 {
           0% {
             transform: scale(1, 1) translateY(0);
@@ -73,6 +87,10 @@ export default function Jumper({
           flex-direction: column;
           align-items: center;
           animation-name: bounce-7;
+          animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+        }
+        .glow {
+          animation-name: glow;
           animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
         }
         .text {
