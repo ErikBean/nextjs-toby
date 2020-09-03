@@ -54,7 +54,7 @@ export default function Sidebar() {
           box-shadow: 0 4px 8px ${colors.limedSpruce};
           z-index: 2;
           width: ${open ? '280px' : '80px'};
-          padding: 20px;
+          padding: 15px;
           transition: width 0.5s ease-in-out;
           box-sizing: border-box;
         }
@@ -94,7 +94,7 @@ export default function Sidebar() {
           height: 400px;
         }
         .route-icon {
-          padding: ${open ? '0 20px 0 0' : '0'};
+          padding: ${open ? '0 20px 0 0' : '0 5px'};
         }
         .title-text {
           position: ${open ? 'relative' : 'absolute'};
@@ -121,7 +121,7 @@ export default function Sidebar() {
           text-decoration: none;
           font-size: ${open ? '1.5rem' : '2.5rem'};
           box-sizing: border-box;
-          transition: font-size 0.7s ease-in-out;
+          transition: all 0.7s ease-in-out;
         }
       `}</style>
     </>

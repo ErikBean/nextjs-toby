@@ -14,11 +14,15 @@ export default ({ children }) => {
       <style jsx>{`
         .main-container {
           display: flex;
-          height: 100%;
+          overflow: auto;
           width: 100%;
+          height: 100%;
         }
         .main-content {
           flex-grow: 1;
+        }
+        .main {
+          min-width: 200px;
         }
       `}</style>
     </>

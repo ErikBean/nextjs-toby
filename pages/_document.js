@@ -6,10 +6,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-          />
+          <link rel="stylesheet" href="/reset.min.css" />
           <link rel="icon" href="/favicon/favicon.ico" />
           <link rel="manifest" href="/site.webmanifest" />
         </Head>
@@ -24,8 +21,6 @@ class MyDocument extends Document {
           #__next {
             background-color: ${colors.alabaster};
             font-family: Open Sans, Helvetica, sans-serif;
-            width: 100vw;
-            height: 100vh;
           }
         `}</style>
       </Html>

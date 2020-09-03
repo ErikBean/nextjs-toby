@@ -2,6 +2,8 @@ import { sizes } from '../src/sizes';
 import { colors } from '../src/colors';
 import hashCode from '../src/magicHash';
 import PageTitle from '../src/PageTitle';
+import Jumper from '../src/Jumper';
+import { useState } from 'react';
 
 const facts = [
   'I am a white golden retriever, and a Guide Dogs for America flunky.',
@@ -10,12 +12,20 @@ const facts = [
 ];
 
 export default function About() {
+  const [jumperShown, setJumperShown] = useState(false);
   return (
     <>
       <PageTitle title="About Me" />
       <div className="container">
-        <img src="/toby-car.jpg" className="toby-car" />
-        <p className="bio">
+        <img
+          src="/toby-car.jpg"
+          className="toby-car"
+          onLoad={() => setJumperShown(true)}
+        />
+        <div className="jumper-box">
+          {jumperShown && <Jumper text="THAT'S ME!" />}
+        </div>
+        <div className="bio">
           <ul className="list">
             {facts.map((fact) => (
               <li className="list-item" key={hashCode(fact)}>
@@ -23,7 +33,7 @@ export default function About() {
               </li>
             ))}
           </ul>
-        </p>
+        </div>
       </div>
       <style jsx>{`
         @keyframes fadeIn {
@@ -37,21 +47,27 @@ export default function About() {
         .container {
           display: flex;
           justify-content: space-between;
+          position: relative;
         }
         .toby-car {
-          width: 500px;
+          width: 100%;
           background: ${colors.santasGrey};
           animation: fadeIn ease 2s;
+        }
+        .jumper-box {
+          position: absolute;
         }
         .bio {
           font-size: 24px;
           padding: 20px;
           font-family: Times, serif;
-          min-width: 50%;
+          min-width: 250px;
         }
         .list {
           list-style-type: '🦴 ';
+          margin-left: 40px;
         }
+
         @media (any-hover: hover) {
           .list-item:hover {
             list-style-type: '🐶 ';
@@ -61,9 +77,6 @@ export default function About() {
         @media (max-width: ${sizes.mobileMax}) {
           .container {
             flex-direction: column;
-          }
-          .list {
-            margin-left: 40px;
           }
         }
       `}</style>
