@@ -4,6 +4,7 @@ export default function Crates() {
     <>
       <PageTitle title="Crates" />
       <p className="bio">Checkout my crib, yo!</p>
+
       <style jsx>{`
         .bio {
           font-size: 24px;

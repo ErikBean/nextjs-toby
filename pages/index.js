@@ -14,27 +14,27 @@ const facts = [
 export default function About() {
   const [jumperClicked, setJumperClicked] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
-  const img = useRef();
   const toggleJumper = () => setJumperClicked(!jumperClicked);
-  useEffect(() => {
-    if (img.current.complete) {
-      setImgLoaded(true);
-    }
-  }, [img]);
   return (
     <>
       <PageTitle title="About Me" />
       <div className="container" onClick={toggleJumper}>
         <div className="img-box">
-          <img src="/toby-car.jpg" className="toby-car" />
-          <img ref={img} src="/sunglasses.png" className="sunglasses" />
+          <img
+            src="/toby-car.jpg"
+            className="toby-car"
+            onLoad={() => setImgLoaded(true)}
+          />
+          {imgLoaded && <img src="/sunglasses.png" className="sunglasses" />}
           <div className="jumper-box">
-            <Jumper
-              ball
-              image="/tennis-ball.webp"
-              inMotion={jumperClicked}
-              glow
-            />
+            {imgLoaded && (
+              <Jumper
+                ball
+                image="/tennis-ball.webp"
+                inMotion={jumperClicked}
+                glow
+              />
+            )}
           </div>
         </div>
         <div className="bio">
@@ -54,12 +54,12 @@ export default function About() {
         }
         .img-box {
           position: relative;
+          background-color: ${colors.santasGray};
         }
         .toby-car {
           opacity: ${imgLoaded ? 1 : 0};
-          width: 100%;
           width: 600px;
-          background: ${colors.santasGrey};
+          height: 450px;
         }
         .sunglasses {
           position: absolute;
