@@ -15,6 +15,12 @@ export default function About() {
   const [jumperClicked, setJumperClicked] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
   const toggleJumper = () => setJumperClicked(!jumperClicked);
+  const img = useRef();
+  useEffect(() => {
+    if(img.current.complete){
+      setImgLoaded(true);
+    }
+  }, [img])
   return (
     <>
       <PageTitle title="About Me" />
@@ -22,8 +28,8 @@ export default function About() {
         <div className="img-box">
           <img
             src="/toby-car.jpg"
-            className="toby-car"
-            onLoad={() => setImgLoaded(true)}
+            ref={img}
+            className={`toby-car ${imgLoaded ? 'loaded' : ''}`}
           />
           {imgLoaded && <img src="/sunglasses.png" className="sunglasses" />}
           <div className="jumper-box">
@@ -57,9 +63,12 @@ export default function About() {
           background-color: ${colors.santasGray};
         }
         .toby-car {
-          opacity: ${imgLoaded ? 1 : 0};
+          opacity: 0;
           width: 600px;
           height: 450px;
+        }
+        .toby-car.loaded {
+          opacity: 1;
         }
         .sunglasses {
           position: absolute;
@@ -70,6 +79,7 @@ export default function About() {
             ? 'rotate(-42deg) scale(0.37) translate(108px, 434px)'
             : 'translateY(-1000px)'};
           transition: all 2s linear;
+          z-index: 1;
         }
         .jumper-box {
           position: absolute;

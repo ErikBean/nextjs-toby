@@ -1,9 +1,6 @@
 import { colors } from '../src/colors';
 
 export default function Jumper({
-  text = '',
-  color = 'blue',
-  arrow = false,
   ball = false,
   image = '',
   inMotion = true,
@@ -58,7 +55,6 @@ export default function Jumper({
           align-self: flex-end;
           animation-duration: 2s;
           animation-iteration-count: infinite;
-          background-color: ${image ? 'transparent' : color};
           margin: 0 auto 0 auto;
           transform-origin: bottom;
           height: 20%;
@@ -68,18 +64,7 @@ export default function Jumper({
           justify-content: flex-end;
           border-radius: ${ball ? 999 : 0}px;
           background-image: ${image ? `url(${image})` : 'none'};
-          background-size: contain;
-        }
-        .box::after {
-          content: '';
-          position: absolute;
-          top: -100px;
-          border-left: 100px solid transparent;
-          border-right: 100px solid transparent;
-          border-bottom: 100px solid ${arrow ? color : 'transparent'};
-        }
-        .box::before {
-          content: '${text}';
+          background-size: cover;
         }
         .bounce-7 {
           font-size: 100%;
